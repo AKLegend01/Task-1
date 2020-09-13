@@ -4,11 +4,12 @@ using System.Text;
 
 namespace Task_1
 {
-    public class Obstacle
+    public class Obstacle : Tile
     {
-        public Obstacle()
+        int X, Y;
+        public Obstacle() : base (X, Y)
         {
-                      
+                
         }
     }
 }
