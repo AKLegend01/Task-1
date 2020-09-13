@@ -4,8 +4,11 @@ using System.Text;
 
 namespace Task_1
 {
-    class Obstacle
+    public class Obstacle
     {
-
+        public Obstacle()
+        {
+                      
+        }
     }
 }
