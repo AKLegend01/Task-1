@@ -6,10 +6,11 @@ namespace Task_1
 {
     public class Obstacle : Tile
     {
-        int X, Y;
-        public Obstacle() : base (X, Y)
+
+        public Obstacle(int X, int Y) : base (X, Y)
         {
-                
-        }
+
+
+        }  // Question 2.1 - Obstical Subclass and constructer
     }
 }
