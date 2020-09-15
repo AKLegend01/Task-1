@@ -7,7 +7,7 @@ namespace Task_1
     abstract class Character : Tile
     {
         protected int maxHP;
-        protected int[] Tile = new int[4];
+        protected char[] TileVision;
         protected int damage;
         protected int hP;
 
@@ -20,24 +20,12 @@ namespace Task_1
         // Question 2.2 - variables declared 
 
 
-        public Character(int MaxHP,int HP,int Damage)
-        {
-            this.maxHP = MaxHP;
-            this.hP = HP;
-            this.damage = Damage;
-
-            Tile[0] = Y + 1; // North
-            Tile[1] = Y - 1; // South
-            Tile[2] = X + 1; // East
-            Tile[3] = X - 1; // West
-
-        }
         public Character(int x, int y) : base(x, y)
         {
 
         }  // Question 2.3 - Constructor for X and Y
 
-        public virtual void Attack(Character Target)
+        public void Attack(Character Target)
         {
             Target.HP -= Damage;
         }  // Question 2.3 - attack method
@@ -83,12 +71,9 @@ namespace Task_1
             }
         }  //  Question 2.3 - Move Character
 
-        /*
-        public abstract Movement ReturnMove(Movement Move = 0)
-        {
 
-        }
-        */
+        public abstract Movement ReturnMove(Movement Move = 0);
+        
 
         public abstract override string ToString();  // Question 2.3 - ToString Override
 

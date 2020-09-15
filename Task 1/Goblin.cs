@@ -6,17 +6,14 @@ namespace Task_1
 {
     class Goblin : Enemy
     {
-        public Goblin(int x, int y) : base (x, y)
+        public Goblin(int x, int y) : base (x, y, 1, 10)
         {
 
-        }
+        }  //  Question 2.5 - recive X and Y and pass on
 
-        public Goblin() : base (10, 10, 1)
-        {
 
-        }
 
-        public override ReturnMove()
+        public override Movement ReturnMove(Movement Move)
         {
             bool found = false;
             while (found == false)
@@ -33,8 +30,11 @@ namespace Task_1
                     case 4:
                         break;
                 }
+
+                return Move; 
             }
         }
+        
 
     }
 }
