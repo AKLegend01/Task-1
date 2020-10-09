@@ -8,17 +8,15 @@ namespace Task_1
     {
         protected Random r = new Random();
 
-        public Enemy(int x, int y, int Damage, int hp) : base (x, y)
+        public Enemy(int x, int y, int Damage, int hp, char who) : base (hp, Damage, hp, x, y, who)
         {
-            hP = hp;
-            damage = Damage;
-            MaxHP = hp;
+           
             
         }  // Question 2.4 - Constructor
 
         public override string ToString()
         {
-            string Output = "Enemy at " + Convert.ToString(x) + ", " + Convert.ToString(y) + " (" + Convert.ToString(Damage) + ")";
+            string Output = nameof(Enemy) + Convert.ToString(x) + ", " + Convert.ToString(y) + " (" + Convert.ToString(Damage) + ")";
             return Output;
         }  // Question 2.4 - ToString
 

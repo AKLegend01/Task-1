@@ -7,25 +7,28 @@ namespace Task_1
     abstract class Character : Tile
     {
         protected int maxHP;
-        protected char[] TileVision;
+        protected Tile[] tileVision;
         protected int damage;
         protected int hP;
 
         public int Damage { get => damage; set => damage = value; }
         public int HP { get => hP; set => hP = value; }
         public int MaxHP { get => maxHP; set => maxHP = value; }
+        public Tile[] TileVision { get => tileVision; set => tileVision = value; }
 
         public enum Movement { None, Up, Down, Left, Right };
+
 
         // Question 2.2 - variables declared 
 
 
-        public Character(int x, int y) : base(x, y)
+        public Character(int x, int y, char Who) : base(x, y)
         {
 
         }  // Question 2.3 - Constructor for X and Y
 
-        public void Attack(Character Target)
+
+        public virtual void Attack(Character Target)
         {
             Target.HP -= Damage;
         }  // Question 2.3 - attack method
@@ -73,9 +76,9 @@ namespace Task_1
 
 
         public abstract Movement ReturnMove(Movement Move = 0);
-        
 
-        public abstract override string ToString();  // Question 2.3 - ToString Override
+
+        public abstract override string ToString();    // Question 2.3 - ToString Override
 
 
     }

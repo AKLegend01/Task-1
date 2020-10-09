@@ -6,11 +6,11 @@ namespace Task_1
 {
     class Hero : Character
     {
-        public Hero(int X, int Y, int Hp) : base(X, Y)
+        public Hero(int X, int Y, int Hp) : base(X, Y, 'H')
         {
-            MaxHP = Hp;
-            hP = Hp;
-            damage = 2;
+            this.HP = Hp;
+            this.MaxHP = Hp;
+            this.Damage = 2;
         }  //  Question 2.6 
 
         public override string ToString()
@@ -26,7 +26,8 @@ namespace Task_1
 
         public override Movement ReturnMove(Movement Move)
         {
-
+            if (tileVision[Convert.ToInt32(Move)].TileEnum == TileType.Empty) return Move;
+            else return Movement.None;
         }
 
     }
