@@ -18,7 +18,9 @@ namespace Task_1
             string Output = "Player Stats : " + "\n";
             Output += "HP : " + hP + "/" + maxHP + "\n";
             Output += "Damage : 2" + "\n";
-            Output += "[" + X + Y + "]";
+            Output += "[" + X + Y + "]" + "\n";
+            Output += "gold : 2" + Gold;
+
 
             return Output;
         }  //  Question 2.6 
@@ -31,8 +33,8 @@ namespace Task_1
 
             //test target tile if empty
 
-            var canMove = tileVision[Convert.ToInt32(Move)].tileType == TileType.Empty;
-            if (canMove != TileType.) return Move;
+            var canMove = tileVision[Convert.ToInt32(Move)].tileType;
+            if (canMove != TileType.Empty) return Move;
             else return Movement.None;
         }
 

@@ -13,7 +13,7 @@ namespace Task_1
 
         public override string toString()
         {
-
+            return nameof(Item);
         }
     }
 }

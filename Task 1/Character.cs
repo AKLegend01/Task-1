@@ -7,18 +7,20 @@ namespace Task_1
     abstract class Character : Tile
     {
         protected int maxHP;
-        protected Tile[] tileVision;
+        protected Tile[] tileVision = new Tile[8];
         protected int damage;   
         protected int hP;
+        private int gold;
 
         //public int Damage { get; set;   ---> "prop" tab tab
 
-        
+
 
         public int Damage { get => damage; set => damage = value; }
         public int HP { get => hP; set => hP = value; }
         public int MaxHP { get => maxHP; set => maxHP = value; }
         public Tile[] TileVision { get => tileVision; set => tileVision = value; }
+        protected int Gold { get => gold; set => gold = value; }
 
         public enum Movement { None, Up, Down, Left, Right };
 
@@ -88,13 +90,8 @@ namespace Task_1
 
         public void Pickup(Item i)
         {
-            switch (i)
-            {
-                case Item.TileType.Gold:
-                    break;
-            }
-
-           
+            Random Amount = new Random();
+            if (i.tileType == Tile.TileType.Gold) Gold += Amount.Next(1,6);          
         }
     }
 }

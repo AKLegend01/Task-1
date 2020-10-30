@@ -15,7 +15,7 @@ namespace Task_1
 
         public Gold(int x, int y) : base(x,y)
         {
-            GoldAmount = r.Next(1, 6);
+            this.tileType = Tile.TileType.Gold;          
         }
     }
 }

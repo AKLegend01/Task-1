@@ -6,7 +6,7 @@ namespace Task_1
     {
         protected int y; // Question 2.1 - protected variables
         protected int x;
-        public enum TileType {Hero, Enemy, Gold, Weapon, Empty}; // Question 2.1 - public accessor
+        public enum TileType {Hero, Goblin, Mage, Gold, Weapon, Empty, obsticle}; // Question 2.1 - public accessor
         protected TileType tileEnum;
 
         public int X { get => x; set => x = value; }

@@ -13,10 +13,13 @@ namespace Task_1
         private int MapWidth, MapHeight;
         private Random r = new Random();
         private Item[] Items;
+        int count = 0;
 
         public int MapWidth1 { get => MapWidth; set => MapWidth = value; }
         public int MapHeight1 { get => MapHeight; set => MapHeight = value; }
-
+        internal Item[] Items1 { get => Items; set => Items = value; }
+        internal Hero H1 { get => H; set => H = value; }
+        internal Enemy[] Enemys1 { get => Enemys; set => Enemys = value; }
 
         public Map(int minW, int maxW, int minH, int maxH, int numEnemies, int goldDrop)
         {
@@ -24,11 +27,19 @@ namespace Task_1
             MapHeight = r.Next(minH, maxH + 1);
 
             this.TileArray = new Tile[MapWidth , MapHeight];
-            this.Enemys = new Enemy[numEnemies];
+            this.Enemys1 = new Enemy[numEnemies];
 
-            this.Items = new Item[goldDrop];
-            int count = 0;
+            this.Items1 = new Item[goldDrop];
+            
 
+            for (int y = 0; y != MapHeight; y++)
+            {
+                for (int x = 0; x != MapWidth; x++)
+                {
+                    if (x == 0 || y == 0 || x == MapWidth || y == MapHeight) TileArray[x, y] = new Obstacle(x, y);
+                    else TileArray[x, y] = new EmptyTile(x, y);
+                }
+            }
 
             //TODO: Create Blank map with obstacles on border and the rest of the tiles as empty
 
@@ -36,14 +47,17 @@ namespace Task_1
             Create(Tile.TileType.Hero);
 
             count = 0;
+            int rand;
             while (count != numEnemies)
             {
                 count++;
-                Create(Tile.TileType.Enemy);
+                rand = r.Next(1, 4);
+                if (rand == 1) Create(Tile.TileType.Mage);
+                else Create(Tile.TileType.Goblin);
             }
 
             count = 0;
-            while (count != Items.Length)
+            while (count != goldDrop)
             {
                 count++;
                 Create(Tile.TileType.Gold);
@@ -62,18 +76,28 @@ namespace Task_1
 
         public void UpdateVision()
         {
-            H.TileVision[1] = TileArray[H.X, H.Y + 1];
-            H.TileVision[2] = TileArray[H.X, H.Y - 1];
-            H.TileVision[3] = TileArray[H.X - 1, H.Y];
-            H.TileVision[4] = TileArray[H.X + 1, H.Y];
+            H1.TileVision[0] = TileArray[H1.X, H1.Y + 1];
+            H1.TileVision[1] = TileArray[H1.X, H1.Y - 1];
+            H1.TileVision[2] = TileArray[H1.X - 1, H1.Y];
+            H1.TileVision[3] = TileArray[H1.X + 1, H1.Y];
+
+            H1.TileVision[4] = TileArray[H1.X + 1, H1.Y + 1];
+            H1.TileVision[5] = TileArray[H1.X + 1, H1.Y - 1];
+            H1.TileVision[6] = TileArray[H1.X - 1, H1.Y + 1];
+            H1.TileVision[7] = TileArray[H1.X - 1, H1.Y - 1];
 
             int count = 0;
-            while (count != Enemys.Length)
+            while (count != Enemys1.Length)
             {
-                Enemys[count].TileVision[1] = TileArray[H.X, H.Y + 1];
-                Enemys[count].TileVision[2] = TileArray[H.X, H.Y - 1];
-                Enemys[count].TileVision[3] = TileArray[H.X - 1, H.Y];
-                Enemys[count].TileVision[4] = TileArray[H.X + 1, H.Y];
+                Enemys1[count].TileVision[0] = TileArray[H1.X, H1.Y + 1];
+                Enemys1[count].TileVision[1] = TileArray[H1.X, H1.Y - 1];
+                Enemys1[count].TileVision[2] = TileArray[H1.X - 1, H1.Y];
+                Enemys1[count].TileVision[3] = TileArray[H1.X + 1, H1.Y];
+
+                Enemys1[count].TileVision[4] = TileArray[H1.X + 1, H1.Y + 1];
+                Enemys1[count].TileVision[5] = TileArray[H1.X + 1, H1.Y - 1];
+                Enemys1[count].TileVision[6] = TileArray[H1.X - 1, H1.Y + 1];
+                Enemys1[count].TileVision[7] = TileArray[H1.X - 1, H1.Y - 1];
                 count++;
             }
         }
@@ -103,41 +127,59 @@ namespace Task_1
                 }
             }
 
-            Tile newTile;
-            int rand;
 
             switch (type)  // "type" ---> Enter
             {
                 case Tile.TileType.Hero:
-                    newTile = new Hero(PosX, PosY, 100);
-                    break;
-                case Tile.TileType.Enemy:
-                    rand = r.Next(1, 4);
-                    if (rand == 1) newTile = new Mage(PosX, PosY);
-                    else newTile = new Goblin(PosX, PosY);
+                    H1 = new Hero(PosX, PosY, 100);
+                    TileArray[H1.X, H1.Y] = H1;
+                    return H1;
+                case Tile.TileType.Mage:
+                    Enemys1[count] = new Mage(PosX, PosY);
+                    return Enemys1[count];
+                case Tile.TileType.Goblin:
+                    Enemys1[count] = new Goblin(PosX, PosY);
                     break;
                 case Tile.TileType.Gold:
-                    newTile = new Gold(PosX,PosY);
-                    break;
+                    Items1[count] = new Gold(PosX,PosY);
+                    return Items1[count];
                 case Tile.TileType.Weapon:
                     throw new NotImplementedException();
                 case Tile.TileType.Empty:
                     throw new NotImplementedException();
-                default:
-                    throw new NotImplementedException();
 
             }
 
+            return null;
+
             //InsertTileIntoMap(newTile);
 
-            return newTile;
 
             //if (type == Tile.TileType.Hero) return new Hero(PosX, PosY, hp);
             //else return new Goblin(PosX, PosY);
 
-
-
         }
+
+
+        public Item GetItemPosision(int x, int y)
+        {
+            for (int i = 0; i < Items1.Length; i++)
+            {
+                if (Items1[i].X == x && Items1[i].Y == y)
+                {
+                    Item thisGold;
+                    thisGold = Items1[i];
+                    Items1[i] = null;
+                    return thisGold;
+                }
+               
+            }
+            return null;
+        }
+
+
+
+
 
         //private Tile GetRandomEmptyTile()
         //{

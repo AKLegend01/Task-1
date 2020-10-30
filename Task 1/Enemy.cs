@@ -8,7 +8,7 @@ namespace Task_1
     {
         protected Random r = new Random();
 
-        public Enemy(int x, int y, int Damage, int hp, char who) : base (hp, Damage, hp, x, y, who)
+        public Enemy(int x, int y, int Damage, int hp, char who) : base (x, y, who)
         {
            
             

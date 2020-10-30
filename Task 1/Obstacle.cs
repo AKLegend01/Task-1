@@ -9,7 +9,7 @@ namespace Task_1
 
         public Obstacle(int X, int Y) : base (X, Y)
         {
-
+            this.tileType = TileType.obsticle;
 
         }  // Question 2.1 - Obstical Subclass and constructer
     }
