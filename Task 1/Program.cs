@@ -8,8 +8,7 @@ namespace Task_1
     {
         GameEngine Game = new GameEngine();
         public void DisplayMap()
-        {
-                    
+        {                  
             string MapLine = "";
 
             for (int x = 0; x < Game.PlayerMap.MapWidth1; x++)
