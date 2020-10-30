@@ -11,7 +11,7 @@ namespace Task_1
 
         }
 
-        public abstract override string toString()
+        public override string toString()
         {
 
         }

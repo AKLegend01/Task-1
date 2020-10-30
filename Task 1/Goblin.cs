@@ -16,7 +16,7 @@ namespace Task_1
         public override Movement ReturnMove(Movement Move)
         {
             int move = r.Next(0, 5);
-            while (tileVision[move].TileEnum == TileType.Empty) move = r.Next(0, 5);
+            while (tileVision[move].tileType == TileType.Empty) move = r.Next(0, 5);
             return (Movement)move;
         }
         

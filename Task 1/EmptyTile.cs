@@ -8,7 +8,7 @@ namespace Task_1
     {
         public EmptyTile(int X, int Y) : base(X, Y)
         {
-
+            this.tileType = TileType.Empty;
 
         }
 

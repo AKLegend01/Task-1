@@ -8,8 +8,12 @@ namespace Task_1
     {
         protected int maxHP;
         protected Tile[] tileVision;
-        protected int damage;
+        protected int damage;   
         protected int hP;
+
+        //public int Damage { get; set;   ---> "prop" tab tab
+
+        
 
         public int Damage { get => damage; set => damage = value; }
         public int HP { get => hP; set => hP = value; }
@@ -24,7 +28,7 @@ namespace Task_1
 
         public Character(int x, int y, char Who) : base(x, y)
         {
-
+           
         }  // Question 2.3 - Constructor for X and Y
 
 
@@ -71,6 +75,8 @@ namespace Task_1
                     break;
                 case Movement.Left: X -= 1;
                     break;
+                case Movement.None: X += 0;
+                    break;
             }
         }  //  Question 2.3 - Move Character
 
@@ -80,6 +86,15 @@ namespace Task_1
 
         public abstract override string ToString();    // Question 2.3 - ToString Override
 
+        public void Pickup(Item i)
+        {
+            switch (i)
+            {
+                case Item.TileType.Gold:
+                    break;
+            }
 
+           
+        }
     }
 }

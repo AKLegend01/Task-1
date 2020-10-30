@@ -10,27 +10,18 @@ namespace Task_1
         
         static void Main(string[] args)
         {
-            int minW, maxW, minH, maxH, EnemyNum;
 
-            Console.WriteLine("Enter map minimum width :");
-            minW = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter map maximum width :");
-            maxW = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter map minimum height :");
-            minH = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter map maximum height :");
-            maxH = Convert.ToInt32(Console.ReadLine());
+            GameEngine Game = new GameEngine();
 
-            EnemyNum = minH + minW;
-
-
-            Map Variable = new Map(minW, maxW, minH, maxH, EnemyNum);
-
-            for (int i = 0; i < Variable.MapWidth1; i++)
+            for (int x = 0; x < map.MapWidth1; x++)
             {
-                for (int j = 0; j < Variable.MapHeight1; j++)
+                for (int y = 0; y < map.MapHeight1; y++)
                 {
-                    if (i == 0 || j == 0 || i == Variable.MapWidth1 - 1 || j == Variable.MapHeight1 - 1) Variable.TileArray[i, j] 
+                    //Test position
+                    //If position is NULL - render either X or . based on X,Y
+                    //if X and Y is on border render X
+                    //Else render .
+                    
 
 
                 }

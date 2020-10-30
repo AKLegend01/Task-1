@@ -20,7 +20,11 @@ namespace Task_1
 
         public override bool CheckRange(Character Target)
         {
-            int 
+            if ((Target.X == x + 1) || (Target.X == x - 1) || (Target.Y == y + 1) || (Target.Y == y - 1)) return true; //x and y +- 1 seperately
+            if ((Target.X == x + 1 && Target.Y == y + 1) || (Target.X == x + 1 && Target.Y == y - 1)) return true;  // x + 1 and y together
+            if ((Target.X == x - 1 && Target.Y == y + 1) || (Target.X == x - 1 && Target.Y == y - 1)) return true;  // x - 1 and y together
+            else return false;
+           
         }
 
     }

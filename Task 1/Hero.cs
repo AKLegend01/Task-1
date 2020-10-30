@@ -23,10 +23,16 @@ namespace Task_1
             return Output;
         }  //  Question 2.6 
 
-
         public override Movement ReturnMove(Movement Move)
         {
-            if (tileVision[Convert.ToInt32(Move)].TileEnum == TileType.Empty) return Move;
+            //Get Target tile
+
+            //get target tile based on x y
+
+            //test target tile if empty
+
+            var canMove = tileVision[Convert.ToInt32(Move)].tileType == TileType.Empty;
+            if (canMove != TileType.) return Move;
             else return Movement.None;
         }
 
