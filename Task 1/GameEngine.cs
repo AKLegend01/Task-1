@@ -139,8 +139,39 @@ namespace Task_1
 
         public void EnemyAttack()
         {
-            for (int i = 0; i < PlayerMap; i++)
+            for (int i = 0; i < PlayerMap.Enemys1.Length; i++)
             {
+                if (PlayerMap.Enemys1[i].tileType == Tile.TileType.Goblin)
+                {
+                    for (int k = 0; k < 4; k++)
+                    {
+                        if (playerMap.Enemys1[i].TileVision[k].tileType == Tile.TileType.Hero) PlayerMap.Enemys1[i].Attack(player);
+                    }
+                }
+
+
+                if (PlayerMap.Enemys1[i].tileType == Tile.TileType.Mage)
+                {
+                    for (int k = 0; k < 8; k++)
+                    {
+                        if (playerMap.Enemys1[i].TileVision[k].tileType == Tile.TileType.Hero) PlayerMap.Enemys1[i].Attack(player);
+
+                        if (PlayerMap.Enemys1[i].TileVision[k].tileType == Tile.TileType.Goblin)
+                        {
+                            for (int j = 0; j < playerMap.Enemys1.Length; j++)
+                            {
+                                if (PlayerMap.Enemys1[j].X == playerMap.Enemys1[i].TileVision[k].X && PlayerMap.Enemys1[j].Y == playerMap.Enemys1[i].TileVision[k].Y)
+                                {
+                                    playerMap.Enemys1[i].Attack(playerMap.Enemys1[j]);
+                                }
+                            }
+                            
+                        }
+                    }
+
+                    
+                }
+
 
             }
         }
